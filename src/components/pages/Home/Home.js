@@ -6,6 +6,9 @@ import axios from 'axios';
 ////////////////////
 //// Environmental
 import './Home.scss'
+import {Link} from "react-router-dom";
+import Loader from "../../shared/Loader/Loader";
+import RedditPost from "../../shared/RedditPost/RedditPost";
 
 const {REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END} = process.env;
 
@@ -13,7 +16,7 @@ const {REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_
 //// External
 
 export default function Home() {
-    const [redditPosts, setRedditPosts] = useState({});
+    const [redditPosts, setRedditPosts] = useState();
 
     const [isLoading, setIsLoading] = useState(false);
     const [loadError, setLoadError] = useState(false);
@@ -23,15 +26,20 @@ export default function Home() {
 
 
         async function getData() {
-            try {
+            setIsLoading(true)
+            setLoadError(false)
 
+            try {
                 const postData = await axios.get(`${REACT_APP_REDDIT_API_HOT}`, {cancelToken: source.token})
-                setRedditPosts(postData.data);
+                setRedditPosts(postData.data.data.children);
+                console.log(postData);
                 console.log(redditPosts);
 
             } catch (e) {
                 console.error(e);
+                setLoadError(true)
             }
+            setIsLoading(false)
         }
 
         getData();
@@ -47,15 +55,16 @@ export default function Home() {
         <>
             <div>
                 <h1>HomePage</h1>
+                {(isLoading) && <Loader/>}
+
 
                 <sl>
-                    <li>
-                        list item
-                    </li>
+                    {(redditPosts) && (redditPosts.map((post) => <RedditPost key={post.data.created} data={post.data}/>))}
                 </sl>
             </div>
         </>
     )
+        ;
 }
 
 /** Created by ownwindows on 14-12-21 **/
