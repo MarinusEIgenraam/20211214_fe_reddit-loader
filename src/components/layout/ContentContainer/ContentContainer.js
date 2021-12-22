@@ -11,9 +11,9 @@ import './ContentContainer.scss'
 export default function ContentContainer({children}) {
 
     return (
-        <sl>
+        <segment>
             {children}
-        </sl>
+        </segment>
     )
 }
 

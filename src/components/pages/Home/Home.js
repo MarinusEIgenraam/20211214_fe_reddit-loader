@@ -8,7 +8,9 @@ import axios from 'axios';
 import './Home.scss'
 import {Link} from "react-router-dom";
 import Loader from "../../shared/Loader/Loader";
-import RedditPost from "../../shared/RedditPost/RedditPost";
+import RedditPost from "../../layout/RedditPost/RedditPost";
+import ContentContainer from "../../layout/ContentContainer/ContentContainer";
+import RedditHero from "../../layout/RedditHero/RedditHero";
 
 const {REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END} = process.env;
 
@@ -53,14 +55,20 @@ export default function Home() {
 
     return (
         <>
-            <div>
-                <h1>HomePage</h1>
+            <div className="container">
                 {(isLoading) && <Loader/>}
 
 
-                <sl>
-                    {(redditPosts) && (redditPosts.map((post) => <RedditPost key={post.data.created} data={post.data}/>))}
-                </sl>
+
+                <ContentContainer>
+
+                    <sl>
+                        <RedditHero>
+                            <h1>HomePage</h1>
+                        </RedditHero>
+                        {(redditPosts) && (redditPosts.map((post) => <RedditPost key={post.data.created} data={post.data}/>))}
+                    </sl>
+                </ContentContainer>
             </div>
         </>
     )

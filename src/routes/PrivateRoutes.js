@@ -1,28 +1,17 @@
 ///////////////////////
 //// Build
-import { Route, Redirect } from "react-router-dom";
+import { Route, Navigate } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthProvider";
 
 
-export default function PrivateRoutes({ children, isAuthenticated, ...rest }) {
+export default function PrivateRoutes({ children, ...rest }) {
 
-    return (
-        <Route
-            { ...rest }
-            render={
-                ({ location }) => (
-                    isAuthenticated
-                        ? (
-                            children
-                        ) : (
-                            <Redirect
-                                to={ {
-                                    pathname: '/login',
-                                    state: { from: location }
-                                } }
-                            />
-                        )
-                )
-            }
-        />
-    );
+    const { authenticated } = useContext(AuthContext);
+
+    useEffect(() => {
+        console.log('i did it')
+    });
+
+    return authenticated ? children : <Navigate to='/'/>;
 };

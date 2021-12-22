@@ -1,3 +1,31 @@
+# Redddit - Post loader
+
+- This application can be installed and launched as described below.
+  - (from the project folder) npm install 
+    - installs the dependencies
+  - npm run build
+    - initiates the .env file
+  - npm run start
+    - launches the application
+
+# Environmental files (.env)
+
+# Folderstructure
+- assets = supportive files like images
+- components = the building bricks of the application
+  - layout = containers for positioning the content 
+  - pages = compilations of components serving one purpose
+  - shared = small components that can be used anywhere
+- context = to manage global app states these providers wrap the app 
+  - AuthContext = can manage the authentication state of the user in the app
+- helpers = helper functions that can be imported in components to fulfill a task
+- routes = as a user is authenticated the app functions expend with private routes
+
+# SCSS - Styling
+- Every separate component has its own scss file that can style the different elements
+- The App.scss contains "root" variables that can be called upon in all other scss files with var("name of variable") 
+- It's a little messy but hey I didn't get paid very well either
+
 
 
 # Getting Started with Create React App

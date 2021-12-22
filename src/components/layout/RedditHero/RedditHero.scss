@@ -1,0 +1,30 @@
+.reddit-subreddit {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: black;
+  text-decoration: none;
+}
+
+.hero {
+  background-color: white;
+  border-radius: 5px;
+  margin: 20px;
+  border: solid 1px var(--border-color);
+  padding: 10px;
+  text-decoration: none;
+  list-style: none;
+}

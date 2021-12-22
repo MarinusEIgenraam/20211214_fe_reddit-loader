@@ -1,38 +1,45 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,800&family=Press+Start+2P&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --primary: hsl(214, 77%, 65%);
+  --secondary: hsl(214, 100%, 76%);
+  --tertiary: hsl(214, 51%, 41%);
+  --quaternary: hsl(213, 70%, 79%);
+  --quinary: hsl(39, 64%, 38%);
+  --senary: hsl(39, 77%, 65%);
+
+  --background-gray: #dae0e6;
+  --light-gray: #ccc;
+  --border-color: #ccc;
+  --very-light0gray: #cccccc20;
+
+
+  --tittle-font: 'Press Start 2P', cursive;
+  --normal-font: 'Open Sans', sans-serif;
+
+  --select-border: var(--lighgray);
+  --select-focus: blue;
+  --select-arrow: var(--select-border);
+
+  --box-border-thin: 0.15vh;
+  --box-border-medium: 0.25vh;
+  --box-border-thick: 0.35vh;
+
+  --shadow-thin: 1.5vh 1.5vh 0.15vh var(--quaternary), 1.5vh 1.5vh 0.1vh var(--box-border-thin) var(--tertiary);
+  --shadow-medium: 1.5vh 1.5vh 0.15vh var(--quaternary), 1.5vh 1.5vh 0.1vh var(--box-border-medium) var(--tertiary);
+
+  --button-shadow: 0.5vh 0.5vh 0.1vh var(--secondary), 0.5vh 0.5vh 0.1vh 0.1vh var(--tertiary);
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+body {
+  background-color: var(--background-gray);
+  font-family: var(--normal-font);
 }

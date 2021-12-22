@@ -19,7 +19,7 @@ export default function AuthProvider({ children }) {
     }
 
     return (
-        <AuthContext.Provider value={ { setAuthenticated, authenticated } }>
+        <AuthContext.Provider value={ { authenticated, toggleAuthenticated } }>
             { children }
         </AuthContext.Provider>
     )
