@@ -7,8 +7,10 @@ import './Subreddit.scss'
 import axios from "axios";
 import Loader from "../../shared/Loader/Loader";
 import LoadError from "../../shared/LoadError/LoadError";
+import ContentContainer from "../../layout/ContentContainer/ContentContainer";
+import RedditHero from "../../layout/RedditHero/RedditHero";
 
-const { REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END } = process.env;
+const { REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END,REACT_APP_REDDIT_LOAD_TIMER } = process.env;
 ////////////////////
 //// External
 
@@ -23,6 +25,10 @@ export default function Subreddit() {
     useEffect(() => {
         const source = axios.CancelToken.source();
 
+        const timer = setTimeout(() => {
+            console.log('This will run after 1 second!')
+            setIsLoading(false)
+        }, REACT_APP_REDDIT_LOAD_TIMER);
 
         async function getPost() {
 
@@ -46,26 +52,37 @@ export default function Subreddit() {
         getPost();
 
         console.log(id);
-        setIsLoading(true)
 
 
         return function clearData() {
             source.cancel()
+            clearTimeout(timer);
+            setIsLoading(false)
+
         };
 
     }, []);
 
     return (
         <div className="center">
-            {isLoading && <Loader isLoading={isLoading} />}
-            {hasError && <LoadError hasError={hasError} />}
-            { postData &&
-                <segment className="container-sub">
-                    <h1>{postData.display_name_prefixed}</h1>
-                    <footer>{ postData.public_description }</footer>
-                    <img alt={ postData.icon_img } src={ postData.icon_img }/>
-                </segment>
-            }
+          <ContentContainer>
+              {isLoading && <Loader isLoading={isLoading} />}
+              {hasError && <LoadError hasError={hasError} />}
+              <RedditHero className="container-sub">
+
+                  {postData &&
+                      <>
+                          <h1>{postData.display_name_prefixed}</h1>
+                          <footer>{ postData.public_description }</footer>
+                          <img alt={ postData.icon_img } src={ postData.icon_img }/>
+
+                      </>
+
+                  }
+              </RedditHero>
+          </ContentContainer>
+
+
         </div>
     )
 }

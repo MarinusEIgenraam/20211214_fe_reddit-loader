@@ -1,6 +1,6 @@
 ////////////////////
 //// Build
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import { useContext } from "react";
 import { useForm } from 'react-hook-form';
@@ -24,6 +24,7 @@ export default function Navigation() {
 
     const { authenticated, toggleAuthenticated } = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const location = useLocation()
 
     function onFormSubmit(data) {
         console.log(data);
@@ -34,6 +35,8 @@ export default function Navigation() {
         <nav>
             <NavLink className='logo-icon' to='/'>
                 <Icon id="logo-icon" alt='home-logo'/>
+                {!(location.pathname === '/') && <h3 className="home">Home</h3> }
+
             </NavLink>
             { !authenticated &&
                 <form>
