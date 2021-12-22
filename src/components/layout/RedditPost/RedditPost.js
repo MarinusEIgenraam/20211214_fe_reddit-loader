@@ -25,11 +25,12 @@ export default function RedditPost({ data }) {
                     r/{ data.subreddit }<span className="author"> • { data.author }</span>
                 </h4>
             </Link>
-            <Link className="post-title" to={ { pathname: `https://www.reddit.com/${ data.permalink }` } } target="_blank">
+            <a href={`https://www.reddit.com/${ data.permalink }`}>
                 <h2>
-                { data.title }
+                    { data.title }
                 </h2>
-            </Link>
+            </a>
+
 
 
             <h4>{ data.domain }</h4>
