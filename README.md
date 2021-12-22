@@ -1,25 +1,27 @@
 # Redddit - Post loader
 
 - This application can be installed and launched as described below.
-  - (from the project folder) npm install 
-    - installs the dependencies
-  - npm run build
+  - (from the project folder) **npm install** 
+    - installs the dependencies -> dependencies are used to give react extra options
+  - **npm run build**
     - initiates the .env file
-  - npm run start
+  - **npm run start**
     - launches the application
 
 # Environmental files (.env)
+- Normally react makes git ignore .env files but for this special project I adjusted that
+- The .env files can contain environmental constants that can be used throughout the complete app by importing them
 
 # Folderstructure
-- assets = supportive files like images
-- components = the building bricks of the application
-  - layout = containers for positioning the content 
-  - pages = compilations of components serving one purpose
-  - shared = small components that can be used anywhere
-- context = to manage global app states these providers wrap the app 
-  - AuthContext = can manage the authentication state of the user in the app
-- helpers = helper functions that can be imported in components to fulfill a task
-- routes = as a user is authenticated the app functions expend with private routes
+- **assets** = supportive files like images
+- **components** = the building bricks of the application
+  - _layout_ = containers for positioning the content 
+  - _pages_ = compilations of components serving one purpose
+  - _shared_ = small components that can be used anywhere
+- **context** = to manage global app states these providers wrap the app 
+  - _AuthContext_ = can manage the authentication state of the user in the app
+- **helpers** = helper functions that can be imported in components to fulfill a task
+- **routes** = as a user is authenticated the app functions expend with private routes
 
 # SCSS - Styling
 - Every separate component has its own scss file that can style the different elements

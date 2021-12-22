@@ -1,0 +1,28 @@
+.container-sub {
+  display: flex;
+  justify-content: center;
+
+  background-color: white;
+  border-radius: 5px;
+  margin: 20px;
+  border: solid 1px var(--border-color);
+  padding: 10px;
+  text-decoration: none;
+  list-style: none;
+  justify-self: center;
+}
+
+.reddit-subreddit {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}

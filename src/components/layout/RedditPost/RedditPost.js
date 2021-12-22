@@ -6,7 +6,8 @@
 import './RedditPost.scss'
 import { Link } from "react-router-dom";
 import React from "react";
-
+import numberWithDots from "../../../helpers/calculateHelper";
+import createDateString from "../../../helpers/createDateString";
 ////////////////////
 //// External
 
@@ -31,11 +32,10 @@ export default function RedditPost({ data }) {
             </Link>
 
 
-            <p>domain: { data.domain }</p>
-            <h4></h4>
-            <p>comments: { data.comments }</p>
-            <p>Subscribers: { data.subreddit_subscribers }</p>
-            <footer>{ data.created }</footer>
+            <h4>{ data.domain }</h4>
+            <p>{ numberWithDots(data.num_comments )} comments</p>
+            <p>{numberWithDots(data.subreddit_subscribers)} people subscribed</p>
+            <footer>{ createDateString(data.created) }</footer>
         </li>
     )
 }

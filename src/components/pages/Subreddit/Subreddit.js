@@ -1,10 +1,12 @@
 ////////////////////
 //// Build
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 //// Environmental
 import './Subreddit.scss'
 import axios from "axios";
+import Loader from "../../shared/Loader/Loader";
+import LoadError from "../../shared/LoadError/LoadError";
 
 const { REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END } = process.env;
 ////////////////////
@@ -20,6 +22,7 @@ export default function Subreddit() {
 
     useEffect(() => {
         const source = axios.CancelToken.source();
+
 
         async function getPost() {
 
@@ -53,15 +56,17 @@ export default function Subreddit() {
     }, []);
 
     return (
-        <>
+        <div className="center">
+            {isLoading && <Loader isLoading={isLoading} />}
+            {hasError && <LoadError hasError={hasError} />}
             { postData &&
-                <segment>
+                <segment className="container-sub">
                     <h1>{postData.display_name_prefixed}</h1>
                     <footer>{ postData.public_description }</footer>
                     <img alt={ postData.icon_img } src={ postData.icon_img }/>
                 </segment>
             }
-        </>
+        </div>
     )
 }
 
