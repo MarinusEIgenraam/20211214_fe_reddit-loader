@@ -4,6 +4,7 @@
 ////////////////////
 //// Environmental
 import './LoadError.scss'
+import RedditHero from "../../layout/RedditHero/RedditHero";
 
 ////////////////////
 //// External
@@ -11,10 +12,10 @@ import './LoadError.scss'
 export default function LoadError({hasError}) {
 
     return (
-        <div className="container">
-            <h3>an error occurred, please hond on</h3>
-            {hasError}
-        </div>
+    <RedditHero className='container'>
+        <h3>an error occurred, please hond on</h3>
+        {hasError}
+    </RedditHero>
     )
 }
 

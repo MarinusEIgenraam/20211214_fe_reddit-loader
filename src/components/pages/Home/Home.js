@@ -15,7 +15,7 @@ import ContentContainer from "../../layout/ContentContainer/ContentContainer";
 import RedditHero from "../../layout/RedditHero/RedditHero";
 import LoadError from "../../shared/LoadError/LoadError";
 
-const { REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END } = process.env;
+const { REACT_APP_REDDIT_API_HOT, REACT_APP_REDDIT_TOPIC, REACT_APP_REDDIT_TOPIC_END, REACT_APP_REDDIT_LOAD_TIMER } = process.env;
 
 ////////////////////
 //// External
@@ -37,6 +37,12 @@ export default function Home() {
             setIsLoading(true)
             setLoadError(false)
 
+            const timer = setTimeout(() => {
+                console.log('This will run after 1 second!')
+                setIsLoading(false)
+            }, REACT_APP_REDDIT_LOAD_TIMER);
+
+
             try {
                 const postData = await axios.get(`${ REACT_APP_REDDIT_API_HOT }`, { cancelToken: source.token })
                 setRedditPosts(postData.data.data.children);
@@ -47,7 +53,6 @@ export default function Home() {
                 console.error(e);
                 setLoadError(true)
             }
-            setIsLoading(false)
         }
 
         getData();
@@ -62,11 +67,12 @@ export default function Home() {
     return (
         <>
             <div className="container">
-                { isLoading && <Loader isLoading={ isLoading }/> }
-                { loadError && <LoadError loadError={ loadError }/> }
+
 
 
                 <ContentContainer>
+                    { isLoading && <Loader isLoading={ isLoading }/> }
+                    { loadError && <LoadError loadError={ loadError }/> }
 
                     <sl>
                         <RedditHero>

@@ -21,15 +21,15 @@ export default function RedditPost({ data }) {
                 <img alt={data.subreddit} className='avatar-image'
                      src="https://styles.redditmedia.com/t5_2z4sy/styles/communityIcon_pcigkqhspva71.png"/>
                 <h4 className='subreddit-name'>
-
                     r/{ data.subreddit }<span className="author"> • { data.author }</span>
                 </h4>
             </Link>
-            <Link className="post-title" to={ { pathname: `https://www.reddit.com/${ data.permalink }` } } target="_blank">
+            <a href={`https://www.reddit.com${ data.permalink }`} className="post-title">
                 <h2>
-                { data.title }
+                    { data.title }
                 </h2>
-            </Link>
+            </a>
+
 
 
             <h4>{ data.domain }</h4>

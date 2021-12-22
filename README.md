@@ -28,6 +28,9 @@
 - The App.scss contains "root" variables that can be called upon in all other scss files with var("name of variable") 
 - It's a little messy but hey I didn't get paid very well either
 
+# Loading and error handling 
+- You can check what happens is we have loading difficulty by changing (REACT_APP_REDDIT_LOAD_TIMER)
+- You can check the error management by changing links in .env (REACT_APP_REDDIT_API_HOT)
 
 
 # Getting Started with Create React App
